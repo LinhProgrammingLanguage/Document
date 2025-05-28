@@ -291,20 +291,6 @@ Linh sử dụng các cấu trúc điều khiển phổ biến để quản lý 
     }
     // Output: Lặp lần thứ: 0, Lặp lần thứ: 1, Lặp lần thứ: 2
     ```
-* **`for (element in collection) { ... }`**: Vòng lặp `for-in` hoặc `for-of` để duyệt qua các phần tử trong `Array` hoặc các cặp khóa-giá trị trong `Map`.
-    ```linh
-    let numbers: int[] = [10, 20, 30];
-    for (var num in numbers) {
-      print("Số:", num);
-    }
-    // Output: Số: 10, Số: 20, Số: 30
-
-    let student_grades: Map<str, int> = {"Alice": 90, "Bob": 85, "Charlie": 92};
-    for (var key in student_grades) { // Lặp qua các khóa
-      print("Học sinh:", key, "Điểm:", student_grades[key]);
-    }
-    // Output: Học sinh: Alice Điểm: 90, Học sinh: Bob Điểm: 85, Học sinh: Charlie Điểm: 92
-    ```
 
 ### 9. Chú Thích (Comments)
 
@@ -336,9 +322,11 @@ let user_database: Map<int, Map<str, any>> = {
 // Hàm này yêu cầu một giá trị mặc định để trả về nếu người dùng không được tìm thấy,
 // đảm bảo rằng hàm luôn trả về một đối tượng Map hợp lệ, không bao giờ là uninit.
 func find_user_by_id(search_id: int, default_user: Map<str, any>): Map<str, any> {
-    // Kiểm tra xem khóa (ID) có tồn tại trong user_database hay không
-    if (user_database.has_key(search_id)) {
-        return user_database[search_id]; // Trả về thông tin người dùng nếu tìm thấy
+    // Trong Linh, truy cập một khóa không tồn tại trong Map sẽ trả về uninit.
+    // Do đó, chúng ta kiểm tra giá trị trả về có phải là uninit hay không.
+    var found_user_data = user_database[search_id];
+    if (type(found_user_data) != type(uninit)) {
+        return found_user_data; // Trả về thông tin người dùng nếu tìm thấy
     } else {
         return default_user;             // Trả về giá trị mặc định nếu không tìm thấy
     }

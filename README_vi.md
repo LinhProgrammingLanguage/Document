@@ -130,8 +130,8 @@ Linh không có `null` hay `undefined`. Thay vào đó, nó sử dụng khái ni
 
 | Kiểu                          | Mô tả                                                               | Giá trị Zero | Ví dụ Literal     |
 | :---------------------------- | :------------------------------------------------------------------ | :----------- | :---------------- |
-| `Map<K, V>`                   | Ánh xạ khóa-giá trị, tương tự như từ điển (dictionary) hoặc đối tượng (object) trong các ngôn ngữ khác. Mặc định là `Map<any, any>`. | `{}`         | `{"name": "Linh", "age": 1}` |
-| `Array`                       | Mảng động, có thể chứa các phần tử thuộc nhiều kiểu khác nhau (ngầm định là `Array<any>`). | `[]`         | `[1, "two", true]`|
+| `map<K, V>`                   | Ánh xạ khóa-giá trị, tương tự như từ điển (dictionary) hoặc đối tượng (object) trong các ngôn ngữ khác. Mặc định là `Map<any, any>`. | `{}`         | `{"name": "Linh", "age": 1}` |
+| `array`                       | Mảng động, có thể chứa các phần tử thuộc nhiều kiểu khác nhau (ngầm định là `Array<any>`). | `[]`         | `[1, "two", true]`|
 | `Type[]`                      | Mảng đồng nhất kiểu `Type`, nghĩa là tất cả các phần tử trong mảng phải cùng một kiểu dữ liệu cụ thể. | `[]`         | `[1, 2, 3]` (nếu `int[]`), `["apple", "banana"]` (nếu `str[]`) |
 
 **Kiểu Dữ Liệu Đặc Biệt (Không dùng để khai báo biến trực tiếp):**
